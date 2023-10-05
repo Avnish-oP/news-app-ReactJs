@@ -2,10 +2,23 @@ import React, { Component } from "react";
 import NewsCard from "./NewsItem";
 import { PulseLoader } from "react-spinners";
 import BottomButtons from "./bottomButtons";
+import PropTypes from 'prop-types';
+import Navbar from "./Navbar";
+
 
 export class News extends Component {
-  constructor() {
-    super();
+  static defaultProps = {
+    country: "in",
+    pageSize: 20,
+    category: "general",
+  };
+  static propTypes = {
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
+    category: PropTypes.string,
+  };
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       loading: false,
@@ -15,9 +28,9 @@ export class News extends Component {
   }
   async componentDidMount() {
     try {
-      this.setState({ loading: true });
+      this.setState({ loading: true , category: this.props.category});
       let data = await fetch(
-        `https://newsapi.org/v2/everything?q=india&apiKey=5f243c25cf8d41bda631796791d1d619&page=${this.state.page}`
+        `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=5f243c25cf8d41bda631796791d1d619&page=${this.state.page}&pageSize=20`
       );
 
       let parsedData = await data.json();
@@ -27,11 +40,15 @@ export class News extends Component {
       this.setState({
         articles: filteredData,
         loading: false,
-        totalPage: Math.ceil(filteredData.length / 20),
+        totalPage: (parsedData.totalResults / 20).toFixed(0),
       });
-      console.log(this.state.totalPage);
     } catch (e) {
       this.setState({ loading: false });
+    }
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.category !== this.props.category) {
+      this.componentDidMount();
     }
   }
 
@@ -40,7 +57,6 @@ export class News extends Component {
     this.componentDidMount();
   };
   handleNextClick = () => {
-    console.log(this.state.page);
     this.setState({ page: this.state.page + 1 }, () => {
       this.componentDidMount();
     });
@@ -69,9 +85,7 @@ export class News extends Component {
           <h1 className="mx-auto">Today's Top HeadLines</h1>
         </div>
         <div className="flex flex-wrap justify-center gap-4 overflow-x-hidden">
-          {articles
-            .slice((this.state.page - 1) * 20, this.state.page * 20)
-            .map((news) => (
+          {articles.map((news) => (
               <NewsCard
                 key={news.url}
                 image={news.urlToImage}

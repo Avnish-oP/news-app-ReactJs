@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import{Link} from 'react-router-dom'
 
 class Navbar extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Navbar extends Component {
 
     return (
       <nav className="bg-gray-800">
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 lg:flex justify-between items-center">
+        <div className="mx-auto px-2 sm:px-6 lg:px-8 lg:flex lg:justify-between items-center">
           <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               <button
@@ -89,33 +90,39 @@ class Navbar extends Component {
                   TechRadar
                 </h1>
               </div>
-              <div className="hidden absolute left-[29vw] top-3 sm:block sm:ml-6">
+              <div className="hidden  top-3 sm:block sm:ml-6">
                 <div className="flex space-x-4">
                   {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                  <a
-                    href="#"
+                  <Link
+                    to="/"
                     className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-md font-medium"
                   >
                     Home
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="/business"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-md font-medium"
                   >
-                    News
-                  </a>
-                  <a
-                    href="#"
+                    Business
+                  </Link>
+                  <Link
+                    to="/technology"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md textmd font-medium"
                   >
                     Technology
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="/entertainment"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-md font-medium"
                   >
-                    Reviews
-                  </a>
+                    Entertainment
+                  </Link>
+                  <Link
+                    to="/science"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                  >
+                    Science
+                  </Link>
                 </div>
               </div>
             </div>
@@ -127,30 +134,36 @@ class Navbar extends Component {
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
               {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Home
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/business"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               >
-                News
-              </a>
-              <a
-                href="#"
+                Business
+              </Link>
+              <Link
+                to="/technology"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Technology
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/entertainment"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               >
-                Reviews
-              </a>
+                Entertainment
+              </Link>
+              <Link
+                to="/science" 
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                Science
+              </Link>
               <button className="bg-gray-900 text-white px-3 py-2 block mb-1 rounded-md text-sm font-medium">
               Log in
             </button>
