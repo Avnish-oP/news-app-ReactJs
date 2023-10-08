@@ -96,6 +96,7 @@ class Navbar extends Component {
                   <Link
                     to="/"
                     className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-md font-medium"
+                    
                   >
                     Home
                   </Link>

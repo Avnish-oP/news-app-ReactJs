@@ -24,6 +24,7 @@ export class News extends Component {
       loading: false,
       page: 1,
       totalPage: 1,
+      category: this.props.category,
     };
   }
   async componentDidMount() {
@@ -82,7 +83,7 @@ export class News extends Component {
     return (
       <>
         <div className="flex justify-center text-2xl sm:text-4xl font-bold my-4">
-          <h1 className="mx-auto">Today's Top HeadLines</h1>
+          <h1 className="mx-auto">Today's {this.props.category==='general'?'Top Headlines':`${this.props.category} News`} </h1>
         </div>
         <div className="flex flex-wrap justify-center gap-4 overflow-x-hidden">
           {articles.map((news) => (
@@ -92,6 +93,9 @@ export class News extends Component {
                 title={news.title}
                 description={news.description}
                 url={news.url}
+                author={news.author}
+                date={news.publishedAt}
+                source={news.source.name}
               />
             ))}
         </div>
