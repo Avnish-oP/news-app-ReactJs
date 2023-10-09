@@ -46,6 +46,7 @@ export class News extends Component {
     } catch (e) {
       this.setState({ loading: false });
     }
+    document.title = `${this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} - NewsMonkey`;
   }
   componentDidUpdate(prevProps) {
     if (prevProps.category !== this.props.category) {
@@ -83,7 +84,7 @@ export class News extends Component {
     return (
       <>
         <div className="flex justify-center text-2xl sm:text-4xl font-bold my-4">
-          <h1 className="mx-auto">Today's {this.props.category==='general'?'Top Headlines':`${this.props.category} News`} </h1>
+          <h1 className="mx-auto">Today's {this.props.category==='general'?'Top Headlines':`${this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} - News`} </h1>
         </div>
         <div className="flex flex-wrap justify-center gap-4 overflow-x-hidden">
           {articles.map((news) => (
