@@ -69,12 +69,14 @@ class Navbar extends Component {
                   />
                 </svg>
               </button>
+              
               <h1 className="text-[#f56565] font-bold text-2xl   absolute left-[33vw]">
-                TechRadar
+                <Link to={'/'}>TechRadar</Link>
               </h1>
             </div>
             <div className="flex-1 flex items-center justify-end  sm:items-stretch sm:justify-start">
-              <div className="flex-shrink-0 flex gap-2">
+              <Link to={'/'}>
+              <div className="flex-shrink-0 flex gap-2 cursor-pointer">
                 <img
                   className="block mr-2 lg:hidden h-8 w-auto"
                   src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
@@ -90,6 +92,7 @@ class Navbar extends Component {
                   TechRadar
                 </h1>
               </div>
+              </Link>
               <div className="hidden  top-3 sm:block sm:ml-6">
                 <div className="flex space-x-4">
                   {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
