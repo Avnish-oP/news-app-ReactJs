@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 
 export default class App extends Component {
-  apiKey = '5f243c25cf8d41bda631796791d1d619';
+  apiKey = '8e42e84f05914e49a1c419f16715279c';
   state = {
     progress: 0,
   };
