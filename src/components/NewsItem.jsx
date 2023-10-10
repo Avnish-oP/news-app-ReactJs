@@ -1,17 +1,28 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import defaultImage from "../assets/defaultImage.jpg";
 
 class NewsCard extends Component {
+  static propTypes = {
+    image: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    date: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired,
+  };
+
   render() {
     const { image, title, description, url, author, date, source } = this.props;
-    let dateObj = new Date(date);
-    let dateStr = dateObj.toDateString();
+    const dateObj = new Date(date);
+    const formattedDate = dateObj.toLocaleDateString();
 
     return (
       <div className="rounded max-w-md w-full border-gray-400 border-2 shadow-sm overflow-hidden shadow-gray-700 mx-2 sm:m-0 mt-2">
         <div className="relative">
           <img
-            className="max-h-[35vh] min-w-full  overflow-hidden"
+            className="max-h-[35vh] min-w-full overflow-hidden"
             src={image || defaultImage}
             alt={title}
           />
@@ -23,9 +34,9 @@ class NewsCard extends Component {
           <div className="font-bold text-xl mb-2">{title}</div>
           <p className="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-500">
             {description}
-          </p>{" "}
+          </p>
           <p className="mt-6">
-            By {author} On {dateObj.toUTCString()}
+            By {author || "Unknown"} On {formattedDate}
           </p>
         </div>
 
