@@ -19,10 +19,10 @@ class NewsCard extends Component {
     const formattedDate = dateObj.toLocaleDateString();
 
     return (
-      <div className="rounded max-w-md w-full border-gray-400 border-2 shadow-sm overflow-hidden shadow-gray-700 mx-2 sm:m-0 mt-2">
+      <div className="max-w-md w-full border rounded-lg overflow-hidden shadow-lg mx-2 sm:mx-4 my-4 bg-white">
         <div className="relative">
           <img
-            className="max-h-[35vh] min-w-full overflow-hidden"
+            className="w-full h-48 object-cover"
             src={image || defaultImage}
             alt={title}
           />
@@ -35,15 +35,16 @@ class NewsCard extends Component {
           <p className="text-gray-700 text-base line-clamp-2 hover:line-clamp-none transition-all duration-500">
             {description}
           </p>
-          <p className="mt-6">
-            By {author || "Unknown"} On {formattedDate}
+          <p className="mt-4 text-gray-500 text-sm">
+            By {author || "Unknown"} on {formattedDate}
           </p>
         </div>
-
         <div className="px-6 py-4">
           <a
             href={url}
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-300"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-blue-500 text-white rounded-full px-3 py-1 text-sm font-semibold hover:bg-blue-600 transition-all duration-300"
           >
             Read More
           </a>
